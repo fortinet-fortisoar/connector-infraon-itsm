@@ -1,0 +1,521 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+      "@type": "WorkflowCollection",
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "6a9ea785-18a5-42b5-b516-1f748dbb218d",
+          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "steps": [
+            {
+              "uuid": "3aaacfd4-7490-400c-8680-2cf3f3790f51",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "e552eea4-8abe-4f61-b3df-00779488e6e4",
+              "@type": "WorkflowStep",
+              "name": "Create Incident",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Infraon ITSM",
+                "config": "''",
+                "params": {
+                  "summary": "",
+                  "requester_email": "",
+                  "description": "",
+                  "team_name": "",
+                  "assignee_email": "",
+                  "urgency": "",
+                  "priority": "",
+                  "impact": "",
+                  "status": "",
+                  "severity": "",
+                  "other_fields": ""
+                },
+                "version": "1.0.1",
+                "connector": "infraon",
+                "operation": "create_incident",
+                "operationTitle": "Create Incident"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Creates a new incident in Infraon ITSM.",
+          "name": "Create Incident",
+          "tag": "#Infraon ITSM",
+          "recordTags": [
+            "Infraon",
+            "infraon"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/3aaacfd4-7490-400c-8680-2cf3f3790f51",
+          "routes": [
+            {
+              "uuid": "5b613a51-4611-48c8-8ba0-1aced667cf67",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create Incident",
+              "sourceStep": "/api/3/workflow_steps/3aaacfd4-7490-400c-8680-2cf3f3790f51",
+              "targetStep": "/api/3/workflow_steps/e552eea4-8abe-4f61-b3df-00779488e6e4"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "61f1e99f-361c-4a85-9c46-56eda9283cd1",
+          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "steps": [
+            {
+              "uuid": "78bd2d38-a68b-403b-ae0b-86ce537fd805",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "cb5dc289-368c-46d1-9ec3-38d663bc79aa",
+              "@type": "WorkflowStep",
+              "name": "Get Incident Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Infraon ITSM",
+                "config": "''",
+                "params": {
+                  "ticket_id": ""
+                },
+                "version": "1.0.1",
+                "connector": "infraon",
+                "operation": "get_incident_details",
+                "operationTitle": "Get Incident Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the full details of a specific incident from the Infraon API using its unique ID.",
+          "name": "Get Incident Details",
+          "tag": "#Infraon ITSM",
+          "recordTags": [
+            "Infraon",
+            "infraon"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/78bd2d38-a68b-403b-ae0b-86ce537fd805",
+          "routes": [
+            {
+              "uuid": "7b1395b0-b055-46d7-847e-076aedfe315c",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Incident Details",
+              "sourceStep": "/api/3/workflow_steps/78bd2d38-a68b-403b-ae0b-86ce537fd805",
+              "targetStep": "/api/3/workflow_steps/cb5dc289-368c-46d1-9ec3-38d663bc79aa"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "63f1cfb4-ba11-4107-b77d-c69c954c7fae",
+          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "steps": [
+            {
+              "uuid": "493f817d-2b6b-4288-9bf6-9eab29671e8a",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "28bde21c-84fd-4809-a370-a15c2222238e",
+              "@type": "WorkflowStep",
+              "name": "Get All Incident Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Infraon ITSM",
+                "config": "''",
+                "params": {
+                  "items_per_page": 50,
+                  "page": 1,
+                  "filters": ""
+                },
+                "version": "1.0.1",
+                "connector": "infraon",
+                "operation": "get_all_incident_details",
+                "operationTitle": "Get All Incident Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves a list of all incidents with pagination and filtering.",
+          "name": "Get All Incident Details",
+          "tag": "#Infraon ITSM",
+          "recordTags": [
+            "Infraon",
+            "infraon"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/493f817d-2b6b-4288-9bf6-9eab29671e8a",
+          "routes": [
+            {
+              "uuid": "94b4d8a5-fd74-4547-bbbd-5d81d1e0e2e7",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get All Incident Details",
+              "sourceStep": "/api/3/workflow_steps/493f817d-2b6b-4288-9bf6-9eab29671e8a",
+              "targetStep": "/api/3/workflow_steps/28bde21c-84fd-4809-a370-a15c2222238e"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a71f6374-57af-4774-9b77-afe6e96b148b",
+          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "steps": [
+            {
+              "uuid": "d95826ec-a2d0-4e6d-9d8c-249d733b5c63",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "6c0e5a6c-4872-490f-a2a4-7ad8941f7fe7",
+              "@type": "WorkflowStep",
+              "name": "Update Incident",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Infraon ITSM",
+                "config": "''",
+                "params": {
+                  "display_id": ""
+                },
+                "version": "1.0.1",
+                "connector": "infraon",
+                "operation": "update_incident",
+                "operationTitle": "Update Incident"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Updates an existing incident using its Display ID.",
+          "name": "Update Incident",
+          "tag": "#Infraon ITSM",
+          "recordTags": [
+            "Infraon",
+            "infraon"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/d95826ec-a2d0-4e6d-9d8c-249d733b5c63",
+          "routes": [
+            {
+              "uuid": "ac7708ef-6904-4cab-ae07-728d2181f9e9",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update Incident",
+              "sourceStep": "/api/3/workflow_steps/d95826ec-a2d0-4e6d-9d8c-249d733b5c63",
+              "targetStep": "/api/3/workflow_steps/6c0e5a6c-4872-490f-a2a4-7ad8941f7fe7"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "48f09974-69b7-4acf-bec2-40d405cba91f",
+          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "steps": [
+            {
+              "uuid": "9963bef4-11c3-4c8d-bcfd-2565e211242d",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "bb37bba9-0ee0-4656-af26-745cb6c63b43",
+              "@type": "WorkflowStep",
+              "name": "Add Comment",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Infraon ITSM",
+                "config": "''",
+                "params": {
+                  "display_id": "",
+                  "comment": ""
+                },
+                "version": "1.0.1",
+                "connector": "infraon",
+                "operation": "add_comment",
+                "operationTitle": "Add Comment"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Adds a new comment to an existing incident.",
+          "name": "Add Comment",
+          "tag": "#Infraon ITSM",
+          "recordTags": [
+            "Infraon",
+            "infraon"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/9963bef4-11c3-4c8d-bcfd-2565e211242d",
+          "routes": [
+            {
+              "uuid": "04495f27-bd50-4713-9cd3-c9e172091189",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Add Comment",
+              "sourceStep": "/api/3/workflow_steps/9963bef4-11c3-4c8d-bcfd-2565e211242d",
+              "targetStep": "/api/3/workflow_steps/bb37bba9-0ee0-4656-af26-745cb6c63b43"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "966cfe6b-0e27-4f6c-82ba-42bfbe6ed803",
+          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "steps": [
+            {
+              "uuid": "5047770e-b262-42e9-8a16-88a817e32a91",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "8bd91a6f-9397-45b3-89ec-589c1aa1b3e1",
+              "@type": "WorkflowStep",
+              "name": "Delete Incident",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Infraon ITSM",
+                "config": "''",
+                "params": {
+                  "display_id": ""
+                },
+                "version": "1.0.1",
+                "connector": "infraon",
+                "operation": "delete_incident",
+                "operationTitle": "Delete Incident"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Deletes an incident using its Display ID.",
+          "name": "Delete Incident",
+          "tag": "#Infraon ITSM",
+          "recordTags": [
+            "Infraon",
+            "infraon"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/5047770e-b262-42e9-8a16-88a817e32a91",
+          "routes": [
+            {
+              "uuid": "afecbdca-39a1-44a1-ae01-1d63aaf6400b",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Incident",
+              "sourceStep": "/api/3/workflow_steps/5047770e-b262-42e9-8a16-88a817e32a91",
+              "targetStep": "/api/3/workflow_steps/8bd91a6f-9397-45b3-89ec-589c1aa1b3e1"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "3fecb50c-d0ee-48a5-bda2-3954677a4adc",
+          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "steps": [
+            {
+              "uuid": "3a3b9411-4b48-4ec7-8e01-4b5665a0f153",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "38f1d95d-eb32-4332-87f4-127cfa48e360",
+              "@type": "WorkflowStep",
+              "name": "Add Attachment",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Infraon ITSM",
+                "config": "''",
+                "params": {
+                  "display_id": ""
+                },
+                "version": "1.0.1",
+                "connector": "infraon",
+                "operation": "submit_file",
+                "operationTitle": "Add Attachment"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Attach a file from FortiSOAR to an existing Infraon ITSM ticket.",
+          "name": "Add Attachment",
+          "tag": "#Infraon ITSM",
+          "recordTags": [
+            "Infraon",
+            "infraon"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/3a3b9411-4b48-4ec7-8e01-4b5665a0f153",
+          "routes": [
+            {
+              "uuid": "415bd4d2-aa6d-4039-aeb2-6d575be2c1c0",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Add Attachment",
+              "sourceStep": "/api/3/workflow_steps/3a3b9411-4b48-4ec7-8e01-4b5665a0f153",
+              "targetStep": "/api/3/workflow_steps/38f1d95d-eb32-4332-87f4-127cfa48e360"
+            }
+          ]
+        }
+      ],
+      "name": "Sample - Infraon ITSM - 1.0.1",
+      "description": "Connector for the Infraon ITSM API to manage incidents and tickets.",
+      "visible": true,
+      "recordTags": [
+        "Infraon",
+        "infraon"
+      ]
+    }
+  ]
+}

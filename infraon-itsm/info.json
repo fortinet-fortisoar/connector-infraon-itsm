@@ -1,0 +1,380 @@
+{
+    "name": "infraon",
+    "version": "1.0.1",
+    "label": "Infraon ITSM",
+    "description": "Connector for the Infraon ITSM API to manage incidents and tickets.",
+    "publisher": "Community",
+    "icon_small_name": "1.png",
+    "icon_large_name": "Screenshot 2025-09-29 143305.png",
+    "type": "api",
+    "category": [
+        "ticketing"
+    ],
+    "py_version": "3.11",
+    "cs_approved": false,
+    "help_online": "",
+    "configuration": {
+        "fields": [
+            {
+                "title": "Server URL",
+                "type": "text",
+                "name": "server_url",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "tooltip": "Base URL of the Infraon ITSM API. Example: https://api.infraon.app",
+                "description": "The base API endpoint of your Infraon ITSM instance. This URL is provided by Infraon and is unique to each customer environment."
+            },
+            {
+                "title": "Username",
+                "type": "text",
+                "name": "username",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "tooltip": "Infraon login username or email. Example: admin@example.com",
+                "description": "Username or email address of the Infraon user account that FortiSOAR will use to authenticate and perform ticket operations."
+            },
+            {
+                "title": "Password",
+                "type": "password",
+                "name": "password",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "tooltip": "Password for the Infraon user account.",
+                "description": "Password associated with the Infraon user account. This value is stored securely by FortiSOAR and is used only for authentication."
+            },
+            {
+                "title": "Verify SSL",
+                "type": "checkbox",
+                "name": "verify_ssl",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": true,
+                "tooltip": "Enable SSL certificate verification.",
+                "description": "Controls whether SSL certificates are validated when connecting to the Infraon server. Disable this only if your environment uses self-signed certificates."
+            }
+        ]
+    },
+    "operations": [
+        {
+            "operation": "create_incident",
+            "title": "Create Incident",
+            "description": "Creates a new incident in Infraon ITSM.",
+            "category": "remediation",
+            "annotation": "create_incident",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Summary",
+                    "type": "text",
+                    "name": "summary",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Short title of the incident. Example: VPN connection failed"
+                },
+                {
+                    "title": "Requester Email",
+                    "type": "text",
+                    "name": "requester_email",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Email address of the requester. Example: user@example.com"
+                },
+                {
+                    "title": "Description",
+                    "type": "text",
+                    "name": "description",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Detailed issue description."
+                },
+                {
+                    "title": "Team",
+                    "type": "text",
+                    "name": "team_name",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Infraon team name."
+                },
+                {
+                    "title": "Assignee Email",
+                    "type": "text",
+                    "name": "assignee_email",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Email of the assignee."
+                },
+                {
+                    "title": "Urgency",
+                    "type": "text",
+                    "name": "urgency",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Urgency level. Examples: High, Medium, Low"
+                },
+                {
+                    "title": "Priority",
+                    "type": "text",
+                    "name": "priority",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Priority level. Examples: Critical, High, Medium, Low"
+                },
+                {
+                    "title": "Impact",
+                    "type": "text",
+                    "name": "impact",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Impact category."
+                },
+                {
+                    "title": "Status",
+                    "type": "text",
+                    "name": "status",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Workflow status."
+                },
+                {
+                    "title": "Severity",
+                    "type": "text",
+                    "name": "severity",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Severity level."
+                },
+                {
+                    "title": "Other Fields",
+                    "type": "json",
+                    "name": "other_fields",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Additional fields as JSON."
+                }
+            ],
+            "output_schema": {
+                "status": "",
+                "id": "",
+                "message": "",
+                "msg": "",
+                "data": {
+                    "id": "",
+                    "display_id": "",
+                    "asset_id": "",
+                    "summary": "",
+                    "requester_email": "",
+                    "priority": "",
+                    "impact_service": "",
+                    "creation_time": "",
+                    "ci_name": ""
+                }
+            }
+        },
+        {
+            "operation": "get_incident_details",
+            "title": "Get Incident Details",
+            "description": "Retrieves the full details of a specific incident from the Infraon API using its unique ID.",
+            "category": "investigation",
+            "annotation": "get_incident_details",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Ticket Id",
+                    "type": "text",
+                    "name": "ticket_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Internal Infraon incident ID."
+                }
+            ],
+            "output_schema": {
+                "incident": {},
+                "options": {},
+                "status": {},
+                "transition_status": {},
+                "stage_state_option_map": {}
+            },
+            "open": false
+        },
+        {
+            "operation": "get_all_incident_details",
+            "title": "Get All Incident Details",
+            "description": "Retrieves a list of all incidents with pagination and filtering.",
+            "category": "investigation",
+            "annotation": "get_all_incident_details",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Items Per Page",
+                    "type": "integer",
+                    "name": "items_per_page",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": 50,
+                    "tooltip": "Number of incidents per page."
+                },
+                {
+                    "title": "Page Number",
+                    "type": "integer",
+                    "name": "page",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "value": 1,
+                    "tooltip": "Page number to retrieve."
+                },
+                {
+                    "title": "Filters",
+                    "type": "json",
+                    "name": "filters",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Filter incidents."
+                }
+            ],
+            "output_schema": {
+                "count": 0,
+                "next": "",
+                "previous": null,
+                "results": [],
+                "max_page_limit": 0
+            },
+            "open": false
+        },
+        {
+            "operation": "update_incident",
+            "title": "Update Incident",
+            "description": "Updates an existing incident using its Display ID.",
+            "category": "remediation",
+            "annotation": "update_incident",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Ticket Id",
+                    "type": "text",
+                    "name": "display_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Infraon display ID."
+                }
+            ],
+            "output_schema": {
+                "status": "",
+                "id": "",
+                "message": "",
+                "msg": ""
+            }
+        },
+        {
+            "operation": "add_comment",
+            "title": "Add Comment",
+            "description": "Adds a new comment to an existing incident.",
+            "category": "remediation",
+            "annotation": "add_comment",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Ticket Id",
+                    "type": "text",
+                    "name": "display_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Enter the Display ID of the ticket."
+                },
+                {
+                    "title": "Comment Text",
+                    "type": "text",
+                    "name": "comment",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Enter the comment text."
+                }
+            ],
+            "output_schema": {
+                "status": "",
+                "id": "",
+                "message": "",
+                "msg": "",
+                "data": {
+                    "comment": "",
+                    "display_id": "",
+                    "ref_id": ""
+                }
+            },
+            "open": false
+        },
+        {
+            "operation": "delete_incident",
+            "title": "Delete Incident",
+            "description": "Deletes an incident using its Display ID.",
+            "category": "remediation",
+            "annotation": "delete_incident",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Ticket Id",
+                    "type": "text",
+                    "name": "display_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Infraon display ID of the ticket to delete."
+                }
+            ],
+            "output_schema": {
+                "status": "",
+                "id": "",
+                "message": "",
+                "msg": ""
+            },
+            "open": false
+        },
+        {
+            "operation": "submit_file",
+            "title": "Add Attachment",
+            "description": "Attach a file from FortiSOAR to an existing Infraon ITSM ticket.",
+            "category": "remediation",
+            "annotation": "submit_file",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Ticket Id",
+                    "type": "text",
+                    "name": "display_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Infraon display ID."
+                }
+            ],
+            "output_schema": {
+                "status": "",
+                "id": "",
+                "message": "",
+                "msg": ""
+            },
+            "open": false
+        }
+    ]
+}
