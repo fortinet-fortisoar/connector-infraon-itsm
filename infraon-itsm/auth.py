@@ -1,3 +1,10 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2026 Fortinet Inc
+Copyright end
+"""
+
 import requests
 import time
 from threading import Lock
@@ -10,15 +17,17 @@ logger = get_logger(LOGGER_NAME)
 _token_cache = {}
 _cache_lock = Lock()
 
+
 class InfraonAuth:
     """
     Handles authentication for Infraon ITSM API
     """
+
     def __init__(self, config):
         self.server_url = config.get('server_url', '').strip().rstrip('/')
         if not self.server_url.startswith(('http://', 'https://')):
             self.server_url = f"https://{self.server_url}"
-            
+
         self.username = config.get('username')
         self.password = config.get('password')
         self.verify_ssl = config.get('verify_ssl', False)
