@@ -2,16 +2,16 @@
   "type": "workflow_collections",
   "data": [
     {
-      "uuid": "ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+      "uuid": "b5457f40-4da7-4aec-af42-bd1228012b58",
       "@type": "WorkflowCollection",
       "workflows": [
         {
           "@type": "Workflow",
-          "uuid": "6a9ea785-18a5-42b5-b516-1f748dbb218d",
-          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "uuid": "9f4bd2b1-d9a0-4dc7-9ee4-8c95a2c9bf22",
+          "collection": "/api/3/workflow_collections/b5457f40-4da7-4aec-af42-bd1228012b58",
           "steps": [
             {
-              "uuid": "3aaacfd4-7490-400c-8680-2cf3f3790f51",
+              "uuid": "3445ef57-e51f-4cc5-9fa2-7edfb5fa8a7a",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
@@ -28,14 +28,14 @@
               "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "e552eea4-8abe-4f61-b3df-00779488e6e4",
+              "uuid": "10b12e21-bfd6-4360-8996-7fef970b8339",
               "@type": "WorkflowStep",
               "name": "Create Incident",
               "description": null,
               "status": null,
               "arguments": {
                 "name": "Infraon ITSM",
-                "config": "''",
+                "config": "",
                 "params": {
                   "summary": "",
                   "requester_email": "",
@@ -49,8 +49,8 @@
                   "severity": "",
                   "other_fields": ""
                 },
-                "version": "1.0.1",
-                "connector": "infraon",
+                "version": "1.0.0",
+                "connector": "infraon-itsm",
                 "operation": "create_incident",
                 "operationTitle": "Create Incident"
               },
@@ -60,38 +60,38 @@
             }
           ],
           "triggerLimit": null,
-          "description": "Creates a new incident in Infraon ITSM.",
+          "description": "Create a new incident in the server using the specified summary, requester email, description, and other input parameters that you have specified.",
           "name": "Create Incident",
           "tag": "#Infraon ITSM",
           "recordTags": [
             "Infraon",
-            "infraon"
+            "infraon-itsm"
           ],
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/3aaacfd4-7490-400c-8680-2cf3f3790f51",
+          "triggerStep": "/api/3/workflow_steps/3445ef57-e51f-4cc5-9fa2-7edfb5fa8a7a",
           "routes": [
             {
-              "uuid": "5b613a51-4611-48c8-8ba0-1aced667cf67",
+              "uuid": "79c8e79e-e8b3-44d3-8b88-dc9aae95180d",
               "@type": "WorkflowRoute",
               "label": null,
               "isExecuted": false,
               "name": "Start-> Create Incident",
-              "sourceStep": "/api/3/workflow_steps/3aaacfd4-7490-400c-8680-2cf3f3790f51",
-              "targetStep": "/api/3/workflow_steps/e552eea4-8abe-4f61-b3df-00779488e6e4"
+              "sourceStep": "/api/3/workflow_steps/3445ef57-e51f-4cc5-9fa2-7edfb5fa8a7a",
+              "targetStep": "/api/3/workflow_steps/10b12e21-bfd6-4360-8996-7fef970b8339"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "61f1e99f-361c-4a85-9c46-56eda9283cd1",
-          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "uuid": "b6b99df8-3f56-47c9-b133-db810f76467d",
+          "collection": "/api/3/workflow_collections/b5457f40-4da7-4aec-af42-bd1228012b58",
           "steps": [
             {
-              "uuid": "78bd2d38-a68b-403b-ae0b-86ce537fd805",
+              "uuid": "e3a78fd8-8887-46f2-95a5-a11b08609b9b",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
@@ -108,19 +108,19 @@
               "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "cb5dc289-368c-46d1-9ec3-38d663bc79aa",
+              "uuid": "b3a079c7-31e3-4170-8872-91577ea42365",
               "@type": "WorkflowStep",
               "name": "Get Incident Details",
               "description": null,
               "status": null,
               "arguments": {
                 "name": "Infraon ITSM",
-                "config": "''",
+                "config": "",
                 "params": {
                   "ticket_id": ""
                 },
-                "version": "1.0.1",
-                "connector": "infraon",
+                "version": "1.0.0",
+                "connector": "infraon-itsm",
                 "operation": "get_incident_details",
                 "operationTitle": "Get Incident Details"
               },
@@ -135,33 +135,33 @@
           "tag": "#Infraon ITSM",
           "recordTags": [
             "Infraon",
-            "infraon"
+            "infraon-itsm"
           ],
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/78bd2d38-a68b-403b-ae0b-86ce537fd805",
+          "triggerStep": "/api/3/workflow_steps/e3a78fd8-8887-46f2-95a5-a11b08609b9b",
           "routes": [
             {
-              "uuid": "7b1395b0-b055-46d7-847e-076aedfe315c",
+              "uuid": "f4a00829-4869-4f1e-95ab-1a4d2ba7bc2e",
               "@type": "WorkflowRoute",
               "label": null,
               "isExecuted": false,
               "name": "Start-> Get Incident Details",
-              "sourceStep": "/api/3/workflow_steps/78bd2d38-a68b-403b-ae0b-86ce537fd805",
-              "targetStep": "/api/3/workflow_steps/cb5dc289-368c-46d1-9ec3-38d663bc79aa"
+              "sourceStep": "/api/3/workflow_steps/e3a78fd8-8887-46f2-95a5-a11b08609b9b",
+              "targetStep": "/api/3/workflow_steps/b3a079c7-31e3-4170-8872-91577ea42365"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "63f1cfb4-ba11-4107-b77d-c69c954c7fae",
-          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "uuid": "bae69d39-b481-4f84-8a80-7d82ace01087",
+          "collection": "/api/3/workflow_collections/b5457f40-4da7-4aec-af42-bd1228012b58",
           "steps": [
             {
-              "uuid": "493f817d-2b6b-4288-9bf6-9eab29671e8a",
+              "uuid": "bbb69057-c0a6-4d71-8fd2-5f4f6c80da6f",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
@@ -178,21 +178,21 @@
               "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "28bde21c-84fd-4809-a370-a15c2222238e",
+              "uuid": "c430fd16-7ab0-45cb-ac0b-4b0d89b95a7d",
               "@type": "WorkflowStep",
               "name": "Get All Incident Details",
               "description": null,
               "status": null,
               "arguments": {
                 "name": "Infraon ITSM",
-                "config": "''",
+                "config": "",
                 "params": {
                   "items_per_page": 50,
                   "page": 1,
                   "filters": ""
                 },
-                "version": "1.0.1",
-                "connector": "infraon",
+                "version": "1.0.0",
+                "connector": "infraon-itsm",
                 "operation": "get_all_incident_details",
                 "operationTitle": "Get All Incident Details"
               },
@@ -202,38 +202,38 @@
             }
           ],
           "triggerLimit": null,
-          "description": "Retrieves a list of all incidents with pagination and filtering.",
+          "description": "Retrieves a list of all incidents with pagination and filtering from the Infraon.",
           "name": "Get All Incident Details",
           "tag": "#Infraon ITSM",
           "recordTags": [
             "Infraon",
-            "infraon"
+            "infraon-itsm"
           ],
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/493f817d-2b6b-4288-9bf6-9eab29671e8a",
+          "triggerStep": "/api/3/workflow_steps/bbb69057-c0a6-4d71-8fd2-5f4f6c80da6f",
           "routes": [
             {
-              "uuid": "94b4d8a5-fd74-4547-bbbd-5d81d1e0e2e7",
+              "uuid": "ca304d75-83c3-4064-b7d2-8fe541d40490",
               "@type": "WorkflowRoute",
               "label": null,
               "isExecuted": false,
               "name": "Start-> Get All Incident Details",
-              "sourceStep": "/api/3/workflow_steps/493f817d-2b6b-4288-9bf6-9eab29671e8a",
-              "targetStep": "/api/3/workflow_steps/28bde21c-84fd-4809-a370-a15c2222238e"
+              "sourceStep": "/api/3/workflow_steps/bbb69057-c0a6-4d71-8fd2-5f4f6c80da6f",
+              "targetStep": "/api/3/workflow_steps/c430fd16-7ab0-45cb-ac0b-4b0d89b95a7d"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "a71f6374-57af-4774-9b77-afe6e96b148b",
-          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "uuid": "4542cd30-e77f-40a0-9b59-238e96ffe0ec",
+          "collection": "/api/3/workflow_collections/b5457f40-4da7-4aec-af42-bd1228012b58",
           "steps": [
             {
-              "uuid": "d95826ec-a2d0-4e6d-9d8c-249d733b5c63",
+              "uuid": "3bc0edb2-cabb-4c7e-98d5-77969912d2d9",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
@@ -250,19 +250,33 @@
               "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "6c0e5a6c-4872-490f-a2a4-7ad8941f7fe7",
+              "uuid": "35205d67-59af-4fde-96c6-07dbbf91ed06",
               "@type": "WorkflowStep",
               "name": "Update Incident",
               "description": null,
               "status": null,
               "arguments": {
                 "name": "Infraon ITSM",
-                "config": "''",
+                "config": "",
                 "params": {
-                  "display_id": ""
+                  "display_id": "",
+                  "summary": "",
+                  "description": "",
+                  "status": "",
+                  "urgency": "",
+                  "severity": "",
+                  "priority": "",
+                  "priority_change_reason": "",
+                  "team_name": "",
+                  "team_id": "",
+                  "assignee_name": "",
+                  "assignee_profile": "",
+                  "assignee_profile_id": "",
+                  "assignee_email": "",
+                  "other_fields": ""
                 },
-                "version": "1.0.1",
-                "connector": "infraon",
+                "version": "1.0.0",
+                "connector": "infraon-itsm",
                 "operation": "update_incident",
                 "operationTitle": "Update Incident"
               },
@@ -272,38 +286,38 @@
             }
           ],
           "triggerLimit": null,
-          "description": "Updates an existing incident using its Display ID.",
+          "description": "Updates an existing incident using its ticket ID and other input parameters that you have specified.",
           "name": "Update Incident",
           "tag": "#Infraon ITSM",
           "recordTags": [
             "Infraon",
-            "infraon"
+            "infraon-itsm"
           ],
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/d95826ec-a2d0-4e6d-9d8c-249d733b5c63",
+          "triggerStep": "/api/3/workflow_steps/3bc0edb2-cabb-4c7e-98d5-77969912d2d9",
           "routes": [
             {
-              "uuid": "ac7708ef-6904-4cab-ae07-728d2181f9e9",
+              "uuid": "a34991df-4533-43fe-9b52-119a86bd4b9e",
               "@type": "WorkflowRoute",
               "label": null,
               "isExecuted": false,
               "name": "Start-> Update Incident",
-              "sourceStep": "/api/3/workflow_steps/d95826ec-a2d0-4e6d-9d8c-249d733b5c63",
-              "targetStep": "/api/3/workflow_steps/6c0e5a6c-4872-490f-a2a4-7ad8941f7fe7"
+              "sourceStep": "/api/3/workflow_steps/3bc0edb2-cabb-4c7e-98d5-77969912d2d9",
+              "targetStep": "/api/3/workflow_steps/35205d67-59af-4fde-96c6-07dbbf91ed06"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "48f09974-69b7-4acf-bec2-40d405cba91f",
-          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "uuid": "9a0db638-9919-4a8c-b06e-e91de69be272",
+          "collection": "/api/3/workflow_collections/b5457f40-4da7-4aec-af42-bd1228012b58",
           "steps": [
             {
-              "uuid": "9963bef4-11c3-4c8d-bcfd-2565e211242d",
+              "uuid": "46cb0720-cf9b-42d0-8922-8c8386a02019",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
@@ -320,20 +334,90 @@
               "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "bb37bba9-0ee0-4656-af26-745cb6c63b43",
+              "uuid": "0169eb0e-167d-4617-a852-ee9bbcdc0290",
+              "@type": "WorkflowStep",
+              "name": "Delete Incident",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Infraon ITSM",
+                "config": "",
+                "params": {
+                  "display_id": ""
+                },
+                "version": "1.0.0",
+                "connector": "infraon-itsm",
+                "operation": "delete_incident",
+                "operationTitle": "Delete Incident"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Deletes an incident using its display ID.",
+          "name": "Delete Incident",
+          "tag": "#Infraon ITSM",
+          "recordTags": [
+            "Infraon",
+            "infraon-itsm"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/46cb0720-cf9b-42d0-8922-8c8386a02019",
+          "routes": [
+            {
+              "uuid": "187d651e-8f00-40fd-9ea4-521757d95eeb",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Incident",
+              "sourceStep": "/api/3/workflow_steps/46cb0720-cf9b-42d0-8922-8c8386a02019",
+              "targetStep": "/api/3/workflow_steps/0169eb0e-167d-4617-a852-ee9bbcdc0290"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "21540dad-105a-4927-b659-c71b03bddca5",
+          "collection": "/api/3/workflow_collections/b5457f40-4da7-4aec-af42-bd1228012b58",
+          "steps": [
+            {
+              "uuid": "62b50b22-ea99-471e-a111-a99ac6478f78",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "7992b68a-f871-4c1a-af36-fd42f4381582",
               "@type": "WorkflowStep",
               "name": "Add Comment",
               "description": null,
               "status": null,
               "arguments": {
                 "name": "Infraon ITSM",
-                "config": "''",
+                "config": "",
                 "params": {
                   "display_id": "",
                   "comment": ""
                 },
-                "version": "1.0.1",
-                "connector": "infraon",
+                "version": "1.0.0",
+                "connector": "infraon-itsm",
                 "operation": "add_comment",
                 "operationTitle": "Add Comment"
               },
@@ -348,33 +432,33 @@
           "tag": "#Infraon ITSM",
           "recordTags": [
             "Infraon",
-            "infraon"
+            "infraon-itsm"
           ],
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/9963bef4-11c3-4c8d-bcfd-2565e211242d",
+          "triggerStep": "/api/3/workflow_steps/62b50b22-ea99-471e-a111-a99ac6478f78",
           "routes": [
             {
-              "uuid": "04495f27-bd50-4713-9cd3-c9e172091189",
+              "uuid": "aeba4b54-859d-432c-aa1b-4d402ee15235",
               "@type": "WorkflowRoute",
               "label": null,
               "isExecuted": false,
               "name": "Start-> Add Comment",
-              "sourceStep": "/api/3/workflow_steps/9963bef4-11c3-4c8d-bcfd-2565e211242d",
-              "targetStep": "/api/3/workflow_steps/bb37bba9-0ee0-4656-af26-745cb6c63b43"
+              "sourceStep": "/api/3/workflow_steps/62b50b22-ea99-471e-a111-a99ac6478f78",
+              "targetStep": "/api/3/workflow_steps/7992b68a-f871-4c1a-af36-fd42f4381582"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "966cfe6b-0e27-4f6c-82ba-42bfbe6ed803",
-          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
+          "uuid": "1c629498-dd67-4b85-ad89-a98e95e9ab17",
+          "collection": "/api/3/workflow_collections/b5457f40-4da7-4aec-af42-bd1228012b58",
           "steps": [
             {
-              "uuid": "5047770e-b262-42e9-8a16-88a817e32a91",
+              "uuid": "37282da2-4876-41b0-9b64-981eac677a3b",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
@@ -391,89 +475,22 @@
               "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "8bd91a6f-9397-45b3-89ec-589c1aa1b3e1",
-              "@type": "WorkflowStep",
-              "name": "Delete Incident",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "Infraon ITSM",
-                "config": "''",
-                "params": {
-                  "display_id": ""
-                },
-                "version": "1.0.1",
-                "connector": "infraon",
-                "operation": "delete_incident",
-                "operationTitle": "Delete Incident"
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "triggerLimit": null,
-          "description": "Deletes an incident using its Display ID.",
-          "name": "Delete Incident",
-          "tag": "#Infraon ITSM",
-          "recordTags": [
-            "Infraon",
-            "infraon"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/5047770e-b262-42e9-8a16-88a817e32a91",
-          "routes": [
-            {
-              "uuid": "afecbdca-39a1-44a1-ae01-1d63aaf6400b",
-              "@type": "WorkflowRoute",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Delete Incident",
-              "sourceStep": "/api/3/workflow_steps/5047770e-b262-42e9-8a16-88a817e32a91",
-              "targetStep": "/api/3/workflow_steps/8bd91a6f-9397-45b3-89ec-589c1aa1b3e1"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "3fecb50c-d0ee-48a5-bda2-3954677a4adc",
-          "collection": "/api/3/workflow_collections/ba2dc24a-3514-4c5b-ba5f-08ea372a609a",
-          "steps": [
-            {
-              "uuid": "3a3b9411-4b48-4ec7-8e01-4b5665a0f153",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "step_variables": {
-                  "input": {
-                    "params": []
-                  }
-                }
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
-            },
-            {
-              "uuid": "38f1d95d-eb32-4332-87f4-127cfa48e360",
+              "uuid": "7ab60e3a-e6aa-463c-96d6-863fa268fda1",
               "@type": "WorkflowStep",
               "name": "Add Attachment",
               "description": null,
               "status": null,
               "arguments": {
                 "name": "Infraon ITSM",
-                "config": "''",
+                "config": "",
                 "params": {
-                  "display_id": ""
+                  "display_id": "",
+                  "issue_key": "",
+                  "path": "",
+                  "value": ""
                 },
-                "version": "1.0.1",
-                "connector": "infraon",
+                "version": "1.0.0",
+                "connector": "infraon-itsm",
                 "operation": "submit_file",
                 "operationTitle": "Add Attachment"
               },
@@ -488,33 +505,33 @@
           "tag": "#Infraon ITSM",
           "recordTags": [
             "Infraon",
-            "infraon"
+            "infraon-itsm"
           ],
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/3a3b9411-4b48-4ec7-8e01-4b5665a0f153",
+          "triggerStep": "/api/3/workflow_steps/37282da2-4876-41b0-9b64-981eac677a3b",
           "routes": [
             {
-              "uuid": "415bd4d2-aa6d-4039-aeb2-6d575be2c1c0",
+              "uuid": "0908017a-e55b-4312-a844-8e030162a4d1",
               "@type": "WorkflowRoute",
               "label": null,
               "isExecuted": false,
               "name": "Start-> Add Attachment",
-              "sourceStep": "/api/3/workflow_steps/3a3b9411-4b48-4ec7-8e01-4b5665a0f153",
-              "targetStep": "/api/3/workflow_steps/38f1d95d-eb32-4332-87f4-127cfa48e360"
+              "sourceStep": "/api/3/workflow_steps/37282da2-4876-41b0-9b64-981eac677a3b",
+              "targetStep": "/api/3/workflow_steps/7ab60e3a-e6aa-463c-96d6-863fa268fda1"
             }
           ]
         }
       ],
-      "name": "Sample - Infraon ITSM - 1.0.1",
-      "description": "Connector for the Infraon ITSM API to manage incidents and tickets.",
+      "name": "Sample - Infraon ITSM - 1.0.0",
+      "description": "Infraon ITSM is a cloud-ready, AI-powered IT Service Management (ITSM) platform that helps organizations manage, automate, and optimize their entire IT support and service lifecycle \u2014 from service requests and incidents to problems, changes, and compliance.",
       "visible": true,
       "recordTags": [
         "Infraon",
-        "infraon"
+        "infraon-itsm"
       ]
     }
   ]

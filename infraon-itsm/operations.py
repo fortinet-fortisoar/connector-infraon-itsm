@@ -1,22 +1,35 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2026 Fortinet Inc
+Copyright end
+"""
+
 import requests
 import json
 import base64
 import mimetypes
-from datetime import datetime, timezone
 from os.path import join
-from connectors.core.connector import get_logger, ConnectorError
-from connectors.cyops_utilities.builtins import download_file_from_cyops
-from integrations.crudhub import make_request
+from datetime import datetime, timezone
 
 from .auth import InfraonAuth
-from .constants import LOGGER_NAME, ENDPOINTS
+from .constants import LOGGER_NAME, ENDPOINTS, impact_map, urgency_map, priority_map
+
+try:
+    from connectors.core.connector import get_logger, ConnectorError
+    from connectors.cyops_utilities.builtins import download_file_from_cyops
+    from integrations.crudhub import make_request
+except:
+    pass
 
 logger = get_logger(LOGGER_NAME)
+
 
 class InfraonClient:
     """
     Wrapper for Infraon API calls
     """
+
     def __init__(self, config):
         self.config = config
         self.auth = InfraonAuth(config)
@@ -56,6 +69,7 @@ class InfraonClient:
         except Exception as e:
             raise ConnectorError(str(e))
 
+
 def check_health(config):
     """Health check implementation"""
     client = InfraonClient(config)
@@ -63,10 +77,11 @@ def check_health(config):
     client.auth.get_access_token()
     return True
 
+
 # --- Helper Functions (Preserved from original) ---
 # --- New helper for resolving team/user during updates ---
 def _resolve_team_and_user_for_update(incident_data, team_name=None, assignee_name=None,
-                                     team_id=None, assignee_profile_id=None, assignee_email=None):
+                                      team_id=None, assignee_profile_id=None, assignee_email=None):
     """
     Resolve team and user identifiers using incident_data['options'] and other incident fields.
     Supports resolution by:
@@ -108,7 +123,8 @@ def _resolve_team_and_user_for_update(incident_data, team_name=None, assignee_na
         assignment_payload['assignee'] = assignee_profile_id
         # try to attach full profile if available
         all_users = options.get('users', []) or []
-        user_obj = next((u for u in all_users if u.get('profile_id') == assignee_profile_id or u.get('user') == assignee_profile_id), None)
+        user_obj = next((u for u in all_users if
+                         u.get('profile_id') == assignee_profile_id or u.get('user') == assignee_profile_id), None)
         if user_obj:
             assignment_payload['assignee_profile'] = user_obj
         return assignment_payload
@@ -126,7 +142,8 @@ def _resolve_team_and_user_for_update(incident_data, team_name=None, assignee_na
         # Search selected_assignee_info.profile
         sel = incident_data.get('selected_assignee_info') or {}
         profile = sel.get('profile') if isinstance(sel, dict) else None
-        if profile and (_matches_email(profile.get('email'), email) or _matches_email(profile.get('unmasked_email') if profile.get('unmasked_email') else None, email)):
+        if profile and (_matches_email(profile.get('email'), email) or _matches_email(
+                profile.get('unmasked_email') if profile.get('unmasked_email') else None, email)):
             assignment_payload['assignee'] = profile.get('profile_id') or profile.get('user')
             assignment_payload['assignee_profile'] = profile
             return assignment_payload
@@ -180,6 +197,7 @@ def _resolve_team_and_user_for_update(incident_data, team_name=None, assignee_na
     # nothing requested
     return assignment_payload
 
+
 def _find_incident_id(client, display_id):
     logger.info(f"Searching for incident with Display ID: {display_id}")
 
@@ -215,9 +233,9 @@ def _find_incident_id(client, display_id):
 
             if disp_id == target_id:
                 incident_id = (
-                    inc.get("incident_id") or
-                    inc.get("id") or
-                    inc.get("uuid")
+                        inc.get("incident_id") or
+                        inc.get("id") or
+                        inc.get("uuid")
                 )
 
                 if not incident_id:
@@ -239,8 +257,9 @@ def _find_incident_id(client, display_id):
         page += 1
 
     raise ConnectorError(
-        f"No matching incident found for Display ID: {display_id} after scanning {page-1} pages"
+        f"No matching incident found for Display ID: {display_id} after scanning {page - 1} pages"
     )
+
 
 def _find_option_obj(options_data, name_to_find, field_name):
     if not name_to_find:
@@ -256,6 +275,7 @@ def _find_option_obj(options_data, name_to_find, field_name):
         valid_names = list(set(opt.get('name') for opt in options_iterable if opt.get('name')))
         raise ConnectorError(f"Invalid {field_name} '{name_to_find}'. Valid options are: {valid_names}")
     return found_obj
+
 
 def _get_file_data(iri_type, iri):
     try:
@@ -278,17 +298,17 @@ def _get_file_data(iri_type, iri):
         logger.exception(str(err))
         raise ConnectorError(f'Could not find attachment with ID {iri}')
 
+
 # --- Main Operations ---
 
 def get_incident_details(config, params, **kwargs):
     client = InfraonClient(config)
     display_id = params.get('ticket_id')
-    if not display_id:
-        raise ConnectorError("Missing required parameter: 'ticket_id'")
 
     incident_id = _find_incident_id(client, display_id)
     endpoint = ENDPOINTS['incident_by_id'].format(id=incident_id)
     return client.make_request('GET', endpoint)
+
 
 def get_all_incident_details(config, params, **kwargs):
     client = InfraonClient(config)
@@ -299,6 +319,7 @@ def get_all_incident_details(config, params, **kwargs):
     body = {"filters": params.get('filters', {})}
     endpoint = ENDPOINTS['incident']
     return client.make_request('GET', endpoint, params=query_params, json_data=body)
+
 
 def update_incident(config, params, **kwargs):
     client = InfraonClient(config)
@@ -412,6 +433,7 @@ def update_incident(config, params, **kwargs):
 
     return update_result
 
+
 def add_comment(config, params, **kwargs):
     client = InfraonClient(config)
     display_id = params.get('display_id')
@@ -436,25 +458,14 @@ def add_comment(config, params, **kwargs):
     logger.info(f"Adding comment to incident with Display ID: {display_id}")
     return client.make_request('POST', endpoint, json_data=payload)
 
+
 # --- Modified create_incident ---
 def create_incident(config, params, **kwargs):
     client = InfraonClient(config)
 
     summary = params.get('summary')
     requester_email = params.get('requester_email')
-
-    # Only mandatory fields
-    if not summary:
-        raise ConnectorError("Missing required parameter: 'summary'")
-    if not requester_email:
-        raise ConnectorError("Missing required parameter: 'requester_email'")
-
     description = params.get('description', '')
-
-    # Static maps
-    urgency_map = {"low": 3, "medium": 2, "high": 1}
-    priority_map = {"very low": 5, "low": 4, "medium": 3, "high": 2, "critical": 1}
-    impact_map = {"business": 1, "location": 2, "department": 3, "group": 4, "user": 5}
 
     payload = {
         "summary": summary,
@@ -534,6 +545,7 @@ def create_incident(config, params, **kwargs):
     logger.info(f"Creating new incident with payload: {payload}")
     return client.make_request("POST", endpoint, json_data=payload)
 
+
 def delete_incident(config, params, **kwargs):
     client = InfraonClient(config)
     display_id = params.get('display_id')
@@ -545,6 +557,7 @@ def delete_incident(config, params, **kwargs):
 
     logger.info(f"Deleting incident with Display ID: {display_id} (Internal ID: {incident_id})")
     return client.make_request('DELETE', endpoint)
+
 
 def submit_file(config, params, **kwargs):
     client = InfraonClient(config)
@@ -582,6 +595,7 @@ def submit_file(config, params, **kwargs):
     endpoint = ENDPOINTS['add_attachment']
     logger.info(f"Adding attachment '{file_name}' to incident Display ID: {display_id}")
     return client.make_request('POST', endpoint, json_data=payload)
+
 
 operations = {
     'get_incident_details': get_incident_details,
