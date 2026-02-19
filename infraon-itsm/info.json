@@ -41,7 +41,7 @@
         "required": true,
         "visible": true,
         "editable": true,
-        "tooltip": "Password of the Infraon ITSM server to connect and perform the automated operations.",
+        "tooltip": "Password the Infraon ITSM server to connect and perform the automated operations.",
         "description": "Password the Infraon ITSM server to connect and perform the automated operations."
       },
       {
@@ -52,8 +52,8 @@
         "visible": true,
         "editable": true,
         "value": true,
-        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set to True.",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set to True."
       }
     ]
   },
@@ -61,7 +61,7 @@
     {
       "operation": "create_incident",
       "title": "Create Incident",
-      "description": "Create a new incident in the server using the specified summary, requester email, description, and other input parameters that you have specified.",
+      "description": "Creates a new incident on the server based on the specified summary, requester email, description, and other input parameters that you have specified.",
       "category": "remediation",
       "annotation": "create_incident",
       "enabled": true,
@@ -139,7 +139,7 @@
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Specify the priority level of the incident based on business importance. Possible values are Critical, High, Medium, Low, or Very Low.",
+          "tooltip": "Specify the priority level of the incident based on business importance. Possible values are Critical, High, Medium, Low or Very Low.",
           "options": [
             "Critical",
             "High",
@@ -167,13 +167,13 @@
         },
         {
           "title": "Status",
-          "description": "Define the current workflow status of the incident.",
+          "description": "Specify the current workflow status of the incident.",
           "type": "text",
           "name": "status",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Define the current workflow status of the incident."
+          "tooltip": "Specify the current workflow status of the incident."
         },
         {
           "title": "Severity",
@@ -187,13 +187,13 @@
         },
         {
           "title": "Other Fields",
-          "description": "Provide any additional custom fields required for incident creation as a JSON object.",
+          "description": "Specify any additional custom fields required for incident creation as a JSON object.",
           "type": "json",
           "name": "other_fields",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Provide any additional custom fields required for incident creation as a JSON object."
+          "tooltip": "Specify any additional custom fields required for incident creation as a JSON object."
         }
       ],
       "output_schema": {
@@ -217,7 +217,7 @@
     {
       "operation": "get_incident_details",
       "title": "Get Incident Details",
-      "description": "Retrieves the full details of a specific incident from the Infraon API using its unique ID.",
+      "description": "Retrieves complete details of an incident from the Infraon API based on the incident's unique ID that you have specified.",
       "category": "investigation",
       "annotation": "get_incident_details",
       "enabled": true,
@@ -245,7 +245,7 @@
     {
       "operation": "get_all_incident_details",
       "title": "Get All Incident Details",
-      "description": "Retrieves a list of all incidents with pagination and filtering from the Infraon.",
+      "description": "Retrieves a list of all incidents based on the pagination and filtering criteria that you have specified.",
       "category": "investigation",
       "annotation": "get_all_incident_details",
       "enabled": true,
@@ -302,153 +302,153 @@
       "parameters": [
         {
           "title": "Ticket ID",
-          "description": "Provide the Infraon display ID of the existing incident that you want to update.",
+          "description": "Specify the Infraon display ID of an existing incident to update.",
           "type": "text",
           "name": "display_id",
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Provide the Infraon display ID of the existing incident that you want to update."
+          "tooltip": "Specify the Infraon display ID of an existing incident to update."
         },
         {
           "title": "Summary",
-          "description": "Update the incident summary with a clear and concise title that reflects the current nature or scope of the issue.",
+          "description": "Specify an incident summary to update on this incident.",
           "type": "text",
           "name": "summary",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the incident summary with a clear and concise title that reflects the current nature or scope of the issue."
+          "tooltip": "Specify an incident summary to update on this incident."
         },
         {
           "title": "Description",
-          "description": "Update the detailed description of the incident.",
+          "description": "Specify the detailed description to update on this incident.",
           "type": "text",
           "name": "description",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the detailed description of the incident."
+          "tooltip": "Specify the detailed description to update on this incident."
         },
         {
           "title": "Status",
-          "description": "Update the current workflow status of the incident (e.g., Open, In Progress, On Hold, Resolved, Closed) based on the latest progress.",
+          "description": "Specify the current workflow status to update on this incident. (For example: Open, In Progress, On Hold, Resolved, Closed).",
           "type": "text",
           "name": "status",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the current workflow status of the incident (e.g., Open, In Progress, On Hold, Resolved, Closed) based on the latest progress."
+          "tooltip": "Specify the current workflow status to update on this incident. (For example: Open, In Progress, On Hold, Resolved, Closed)."
         },
         {
           "title": "Urgency",
-          "description": "Update the urgency level based on how quickly the incident needs to be addressed. Typical values include High, Medium, or Low.",
+          "description": "Specify the urgency level to update on this incident. Typical values include High, Medium, or Low.",
           "type": "text",
           "name": "urgency",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the urgency level based on how quickly the incident needs to be addressed. Typical values include High, Medium, or Low."
+          "tooltip": "Specify the urgency level to update on this incident. Typical values include High, Medium, or Low."
         },
         {
           "title": "Severity",
-          "description": "Update the severity level to reflect the current technical impact or extent of service degradation caused by the incident.",
+          "description": "Specify the severity level to update on this incident.",
           "type": "text",
           "name": "severity",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the severity level to reflect the current technical impact or extent of service degradation caused by the incident."
+          "tooltip": "Specify the severity level to update on this incident."
         },
         {
           "title": "Priority",
-          "description": "Update the priority level based on business impact and urgency. Possible values include Critical, High, Medium, Low, or Very Low.",
+          "description": "Specify the priority level to update on this incident. Possible values include Critical, High, Medium, Low, or Very Low.",
           "type": "text",
           "name": "priority",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the priority level based on business impact and urgency. Possible values include Critical, High, Medium, Low, or Very Low."
+          "tooltip": "Specify the priority level to update on this incident. Possible values include Critical, High, Medium, Low, or Very Low."
         },
         {
           "title": "Priority Change Reason",
-          "description": "Provide a justification for any change made to the incident priority, explaining the business or technical reason for the update.",
+          "description": "Specify a justification for changes made to the priority level of the incident.",
           "type": "text",
           "name": "priority_change_reason",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Provide a justification for any change made to the incident priority, explaining the business or technical reason for the update."
+          "tooltip": "Specify a justification for changes made to the priority level of the incident."
         },
         {
           "title": "Team Name",
-          "description": "Update the name of the Infraon team currently responsible for handling or owning the incident.",
+          "description": "Specify the name of the assigned Infraon team to update on this incident.",
           "type": "text",
           "name": "team_name",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the name of the Infraon team currently responsible for handling or owning the incident."
+          "tooltip": "Specify the name of the assigned Infraon team to update on this incident."
         },
         {
           "title": "Team ID",
-          "description": "Update the Infraon team ID corresponding to the team assigned to manage the incident.",
+          "description": "Specify the Infraon team ID corresponding to the team assigned to update on this incident.",
           "type": "text",
           "name": "team_id",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the Infraon team ID corresponding to the team assigned to manage the incident."
+          "tooltip": "Specify the Infraon team ID corresponding to the team assigned to update on this incident."
         },
         {
           "title": "Assignee Name",
-          "description": "Update the name of the user to whom the incident is assigned for investigation or resolution.",
+          "description": "Specify the name of the assigned user to update on this incident.",
           "type": "text",
           "name": "assignee_name",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the name of the user to whom the incident is assigned for investigation or resolution."
+          "tooltip": "Specify the name of the assigned user to update on this incident."
         },
         {
           "title": "Assignee Profile",
-          "description": "Update the assignee profile that defines the role or access level of the user assigned to this incident.",
+          "description": "Specify the assigned profile to update on this incident. The profile defines the role or access level of the user assigned to this incident.",
           "type": "text",
           "name": "assignee_profile",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the assignee profile that defines the role or access level of the user assigned to this incident."
+          "tooltip": "Specify the assigned profile to update on this incident. The profile defines the role or access level of the user assigned to this incident."
         },
         {
           "title": "Assignee Profile ID",
-          "description": "Update the unique profile ID associated with the user assigned to the incident.",
+          "description": "Specify the unique profile ID to update on this incident.",
           "type": "text",
           "name": "assignee_profile_id",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the unique profile ID associated with the user assigned to the incident."
+          "tooltip": "Specify the unique profile ID to update on this incident."
         },
         {
           "title": "Assignee Email",
-          "description": "Update the email address of the user currently assigned to the incident.",
+          "description": "Specify the email address of the user to update on this incident.",
           "type": "text",
           "name": "assignee_email",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Update the email address of the user currently assigned to the incident."
+          "tooltip": "Specify the email address of the user to update on this incident."
         },
         {
           "title": "Other Fields",
-          "description": "Provide any additional or custom fields required for updating the incident in Infraon as a valid JSON object with key-value pairs.",
+          "description": "Specify any additional or custom fields, with values in JSON format to update on this incident.",
           "type": "json",
           "name": "other_fields",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Provide any additional or custom fields required for updating the incident in Infraon as a valid JSON object with key-value pairs."
+          "tooltip": "Specify any additional or custom fields, with values in JSON format to update on this incident."
         }
       ],
       "output_schema": {
@@ -495,23 +495,23 @@
       "parameters": [
         {
           "title": "Ticket ID",
-          "description": "Specify the Infraon display ID of the incident to which the comment should be added.",
+          "description": "Specify the Infraon display ID of the incident on which to add the comment.",
           "type": "text",
           "name": "display_id",
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Specify the Infraon display ID of the incident to which the comment should be added."
+          "tooltip": "Specify the Infraon display ID of the incident on which to add the comment."
         },
         {
           "title": "Comment Text",
-          "description": "Provide the comment content to be added to the specified incident.",
+          "description": "Specify text to add to the comment.",
           "type": "text",
           "name": "comment",
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Provide the comment content to be added to the specified incident."
+          "tooltip": "Specify text to add to the comment."
         }
       ],
       "output_schema": {
@@ -530,7 +530,7 @@
     {
       "operation": "submit_file",
       "title": "Add Attachment",
-      "description": "Attach a file from FortiSOAR to an existing Infraon ITSM ticket.",
+      "description": "Attaches a file from FortiSOAR to an existing Infraon ITSM ticket.",
       "category": "remediation",
       "annotation": "submit_file",
       "enabled": true,
@@ -566,8 +566,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "description": "Type of file that you want to submit to Infraon for analysis. Type can be an Attachment ID or a File IRI.",
-          "tooltip": "Type of file that you want to submit to Infraon for analysis. Type can be an Attachment ID or a File IRI."
+          "description": "Select the type of file to submit to Infraon for analysis. The file type can be an Attachment ID or a File IRI.",
+          "tooltip": "Select the type of file to submit to Infraon for analysis. The file type can be an Attachment ID or a File IRI."
         },
         {
           "name": "value",
@@ -576,8 +576,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "description": "Reference ID that is used to access the attachment metadata from the FortiSOAR™ Attachments module. In the playbook, this defaults to the{{vars.attachment_id}} value or the {{vars.file_iri}} value.",
-          "tooltip": "Reference ID that is used to access the attachment metadata from the FortiSOAR™ Attachments module. In the playbook, this defaults to the{{vars.attachment_id}} value or the {{vars.file_iri}} value."
+          "description": "Specify the reference ID to access the attachment metadata from the FortiSOAR Attachments module. In the playbook, this defaults to the {{vars.attachment_id}} value or the {{vars.file_iri}} value.",
+          "tooltip": "Specify the reference ID to access the attachment metadata from the FortiSOAR Attachments module. In the playbook, this defaults to the {{vars.attachment_id}} value or the {{vars.file_iri}} value."
         }
       ],
       "output_schema": {
